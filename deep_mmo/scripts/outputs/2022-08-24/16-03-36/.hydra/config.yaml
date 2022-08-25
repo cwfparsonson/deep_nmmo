@@ -1,0 +1,22 @@
+experiment:
+  name: neurips2022nmmo
+  seed: 0
+  path_to_save: /scratch/datasets/nmmo/sims/
+  save_dir: null
+wandb:
+  init:
+    project: nmmo
+    entity: ong
+env_loop:
+  _target_: deep_nmmo.envs.team_based_env.loops.env_loop.EnvLoop
+  path_to_env_cls: neurips2022nmmo.TeamBasedEnv
+  path_to_env_config_cls: neurips2022nmmo.CompetitionConfig
+  teams_config:
+    neurips2022nmmo.scripted.CombatTeam:
+      team_id: Combat
+    neurips2022nmmo.scripted.MixtureTeam:
+      team_id: Mixture
+  teams_copies:
+  - 5
+  - 11
+  env_config_kwargs: null

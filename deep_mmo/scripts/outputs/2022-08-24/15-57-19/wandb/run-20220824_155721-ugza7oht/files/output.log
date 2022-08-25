@@ -1,0 +1,37 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Initialised experiment save dir /scratch/datasets/nmmo/sims//neurips2022nmmo/neurips2022nmmo_6/
+Config:
+experiment:
+  name: neurips2022nmmo
+  seed: 0
+  path_to_save: /scratch/datasets/nmmo/sims/
+  save_dir: /scratch/datasets/nmmo/sims//neurips2022nmmo/neurips2022nmmo_6/
+wandb:
+  init:
+    project: nmmo
+    entity: ong
+env_loop:
+  _target_: deep_nmmo.envs.team_based_env.loops.env_loop.EnvLoop
+  path_to_env_cls: neurips2022nmmo.TeamBasedEnv
+  path_to_env_config_cls: neurips2022nmmo.CompetitionConfig
+  teams_config:
+    neurips2022nmmo.scripted.CombatTeam:
+      team_id: Combat
+    neurips2022nmmo.scripted.Mixture:
+      team_id: Mixture
+  teams_copies:
+  - 5
+  - 11
+  env_config_kwargs: null
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+initialising...
+initialised env config
+Generating 40 maps
+ 68%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                      | 27/40 [00:01<00:00, 20.89it/s]
+initialised env
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 40/40 [00:02<00:00, 19.21it/s]
+Error executing job with overrides: []
+Error in call to target 'deep_nmmo.envs.team_based_env.loops.env_loop.EnvLoop':
+TypeError("__init__() missing 1 required positional argument: 'env_config'")
+full_key: env_loop
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

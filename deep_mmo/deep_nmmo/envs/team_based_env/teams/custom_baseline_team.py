@@ -1,0 +1,65 @@
+from deep_nmmo.utils import get_class_from_path
+
+from neurips2022nmmo import Team
+
+from typing import Any, Dict, Type, List
+import numpy as np
+
+
+class CustomBaselineTeam(Team):
+    def __init__(self, 
+                 team_id: str,
+                 paths_to_agents_cls: list,
+                 conf=None, 
+                 **kwargs):
+        '''
+        Args:
+            paths_to_agents_cls (list): List of paths to agent classes.
+        '''
+        super().__init__(team_id, conf)
+        self.id = team_id
+        self.agents = [get_class_from_path(path_to_agent_cls)(config=conf, idx=idx) for idx, path_to_agent_cls in enumerate(paths_to_agents_cls)]
+            
+    def reset(self):
+        pass
+    
+    def act(self, observations: Dict[Any, dict]) -> Dict[int, dict]:
+        if "stat" in observations:
+            stat = observations.pop("stat")
+        actions = {i: self.agents[i](obs) for i, obs in observations.items()}
+        for i in actions:
+            for atn, args in actions[i].items():
+                for arg, val in args.items():
+                    if arg.argType == nmmo.action.Fixed:
+                        actions[i][atn][arg] = arg.edges.index(val)
+                    elif arg == nmmo.action.Target:
+                        actions[i][atn][arg] = self.get_target_index(
+                            val, self.agents[i].ob.agents)
+                    elif atn in (nmmo.action.Sell,
+                                 nmmo.action.Use) and arg == nmmo.action.Item:
+                        actions[i][atn][arg] = self.get_item_index(
+                            val, self.agents[i].ob.items)
+                    elif atn == nmmo.action.Buy and arg == nmmo.action.Item:
+                        actions[i][atn][arg] = self.get_item_index(
+                            val, self.agents[i].ob.market)
+        return actions
+
+    @staticmethod
+    def get_item_index(instance: int, items: np.ndarray) -> int:
+        for i, itm in enumerate(items):
+            id_ = nmmo.scripting.Observation.attribute(itm,
+                                                       nmmo.Serialized.Item.ID)
+            if id_ == instance:
+                return i
+        raise ValueError(f"Instance {instance} not found")
+
+    @staticmethod
+    def get_target_index(target: int, agents: np.ndarray) -> int:
+        targets = [
+            x for x in [
+                nmmo.scripting.Observation.attribute(
+                    agent, nmmo.Serialized.Entity.ID) for agent in agents
+            ] if x
+        ]
+        return targets.index(target)
+

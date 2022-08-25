@@ -1,0 +1,24 @@
+{
+    "os": "Linux-4.18.0-373.el8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.9.0",
+    "heartbeatAt": "2022-08-24T14:57:22.452434",
+    "startedAt": "2022-08-24T14:57:21.866080",
+    "docker": null,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "gpu_count": 4,
+    "cpu_count": 128,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/test_heuristic_from_config.py",
+    "codePath": "deep_mmo/scripts/test_heuristic_from_config.py",
+    "git": {
+        "remote": "http://gitlab.aicrowd.com/neural-mmo/neurips2022-nmmo-starter-kit.git",
+        "commit": "a06bb69fba3f6349cd01da667ab5c4694700528f"
+    },
+    "email": "cwfparsonson@gmail.com",
+    "root": "/home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit",
+    "host": "geneva.ee.ucl.ac.uk",
+    "username": "zciccwf",
+    "executable": "/scratch/zciccwf/py36/envs/neurips2022-nmmo/bin/python"
+}

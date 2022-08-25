@@ -1,0 +1,169 @@
+2022-08-24 15:50:49,539 INFO    StreamThr :3866574 [internal.py:wandb_internal():90] W&B internal server running at pid: 3866574, started at: 2022-08-24 15:50:49.501500
+2022-08-24 15:50:49,540 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: status
+2022-08-24 15:50:49,543 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: status
+2022-08-24 15:50:49,544 DEBUG   SenderThread:3866574 [sender.py:send():302] send: header
+2022-08-24 15:50:49,544 DEBUG   SenderThread:3866574 [sender.py:send():302] send: run
+2022-08-24 15:50:49,545 INFO    WriterThread:3866574 [datastore.py:open_for_write():75] open: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/run-3g1371hi.wandb
+2022-08-24 15:50:49,933 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: check_version
+2022-08-24 15:50:49,935 INFO    SenderThread:3866574 [dir_watcher.py:__init__():216] watching files in: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files
+2022-08-24 15:50:49,935 INFO    SenderThread:3866574 [sender.py:_start_run_threads():913] run started: 3g1371hi with start time 1661352649.502133
+2022-08-24 15:50:49,935 DEBUG   SenderThread:3866574 [sender.py:send():302] send: summary
+2022-08-24 15:50:49,937 INFO    SenderThread:3866574 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-24 15:50:49,938 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: check_version
+2022-08-24 15:50:50,023 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: run_start
+2022-08-24 15:50:50,029 DEBUG   HandlerThread:3866574 [meta.py:__init__():35] meta init
+2022-08-24 15:50:50,029 DEBUG   HandlerThread:3866574 [meta.py:__init__():50] meta init done
+2022-08-24 15:50:50,029 DEBUG   HandlerThread:3866574 [meta.py:probe():216] probe
+2022-08-24 15:50:50,036 DEBUG   HandlerThread:3866574 [meta.py:_setup_git():206] setup git
+2022-08-24 15:50:50,061 DEBUG   HandlerThread:3866574 [meta.py:_setup_git():213] setup git done
+2022-08-24 15:50:50,061 DEBUG   HandlerThread:3866574 [meta.py:_save_pip():54] save pip
+2022-08-24 15:50:50,063 DEBUG   HandlerThread:3866574 [meta.py:_save_pip():68] save pip done
+2022-08-24 15:50:50,064 DEBUG   HandlerThread:3866574 [meta.py:_save_conda():75] save conda
+2022-08-24 15:50:50,939 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_created():275] file/dir created: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/requirements.txt
+2022-08-24 15:50:50,939 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_created():275] file/dir created: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/conda-environment.yaml
+2022-08-24 15:50:50,939 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_created():275] file/dir created: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/wandb-summary.json
+2022-08-24 15:50:51,923 DEBUG   HandlerThread:3866574 [meta.py:_save_conda():85] save conda done
+2022-08-24 15:50:51,923 DEBUG   HandlerThread:3866574 [meta.py:probe():254] probe done
+2022-08-24 15:50:51,929 DEBUG   SenderThread:3866574 [sender.py:send():302] send: files
+2022-08-24 15:50:51,930 INFO    SenderThread:3866574 [sender.py:_save_file():1156] saving file wandb-metadata.json with policy now
+2022-08-24 15:50:51,939 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-24 15:50:51,939 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: stop_status
+2022-08-24 15:50:51,942 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/conda-environment.yaml
+2022-08-24 15:50:51,943 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_created():275] file/dir created: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/wandb-metadata.json
+2022-08-24 15:50:52,121 DEBUG   SenderThread:3866574 [sender.py:send():302] send: telemetry
+2022-08-24 15:50:52,497 INFO    Thread-16 :3866574 [upload_job.py:push():138] Uploaded file /tmp/tmp87979uxawandb/a8svwcv4-wandb-metadata.json
+2022-08-24 15:50:52,944 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_created():275] file/dir created: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/output.log
+2022-08-24 15:50:54,947 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/output.log
+2022-08-24 15:50:55,950 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/output.log
+2022-08-24 15:50:56,363 DEBUG   SenderThread:3866574 [sender.py:send():302] send: exit
+2022-08-24 15:50:56,364 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:50:56,364 INFO    SenderThread:3866574 [sender.py:send_exit():438] handling exit code: 1
+2022-08-24 15:50:56,365 INFO    SenderThread:3866574 [sender.py:send_exit():440] handling runtime: 6
+2022-08-24 15:50:56,368 INFO    SenderThread:3866574 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-24 15:50:56,368 INFO    SenderThread:3866574 [sender.py:send_exit():446] send defer
+2022-08-24 15:50:56,368 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:50:56,369 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:56,369 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 0
+2022-08-24 15:50:56,369 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:56,369 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 0
+2022-08-24 15:50:56,369 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 1
+2022-08-24 15:50:56,370 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:56,370 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 1
+2022-08-24 15:50:56,598 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:50:56,599 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:56,599 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 1
+2022-08-24 15:50:56,599 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 2
+2022-08-24 15:50:56,599 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:50:56,599 DEBUG   SenderThread:3866574 [sender.py:send():302] send: stats
+2022-08-24 15:50:56,600 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:56,600 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 2
+2022-08-24 15:50:56,600 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:56,600 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 2
+2022-08-24 15:50:56,600 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 3
+2022-08-24 15:50:56,600 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:56,600 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 3
+2022-08-24 15:50:56,601 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:56,601 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 3
+2022-08-24 15:50:56,601 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 4
+2022-08-24 15:50:56,601 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:56,601 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 4
+2022-08-24 15:50:56,601 DEBUG   SenderThread:3866574 [sender.py:send():302] send: summary
+2022-08-24 15:50:56,603 INFO    SenderThread:3866574 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-24 15:50:56,603 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:56,603 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 4
+2022-08-24 15:50:56,603 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 5
+2022-08-24 15:50:56,603 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:56,603 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 5
+2022-08-24 15:50:56,604 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:56,604 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 5
+2022-08-24 15:50:56,701 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:50:56,757 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 6
+2022-08-24 15:50:56,757 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:50:56,757 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:56,757 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 6
+2022-08-24 15:50:56,758 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:56,758 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 6
+2022-08-24 15:50:56,858 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:50:56,951 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/config.yaml
+2022-08-24 15:50:56,952 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/wandb-summary.json
+2022-08-24 15:50:57,953 INFO    Thread-12 :3866574 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/output.log
+2022-08-24 15:50:59,544 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 7
+2022-08-24 15:50:59,544 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:50:59,545 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:59,545 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 7
+2022-08-24 15:50:59,545 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:59,545 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 7
+2022-08-24 15:50:59,545 INFO    SenderThread:3866574 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-08-24 15:50:59,646 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:50:59,955 INFO    SenderThread:3866574 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/output.log
+2022-08-24 15:50:59,956 INFO    SenderThread:3866574 [dir_watcher.py:finish():392] scan: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files
+2022-08-24 15:50:59,957 INFO    SenderThread:3866574 [dir_watcher.py:finish():406] scan save: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/config.yaml config.yaml
+2022-08-24 15:50:59,957 INFO    SenderThread:3866574 [dir_watcher.py:finish():406] scan save: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/wandb-summary.json wandb-summary.json
+2022-08-24 15:50:59,957 INFO    SenderThread:3866574 [dir_watcher.py:finish():406] scan save: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/requirements.txt requirements.txt
+2022-08-24 15:50:59,963 INFO    SenderThread:3866574 [dir_watcher.py:finish():406] scan save: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/conda-environment.yaml conda-environment.yaml
+2022-08-24 15:50:59,967 INFO    SenderThread:3866574 [dir_watcher.py:finish():406] scan save: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/wandb-metadata.json wandb-metadata.json
+2022-08-24 15:50:59,967 INFO    SenderThread:3866574 [dir_watcher.py:finish():406] scan save: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/output.log output.log
+2022-08-24 15:50:59,970 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 8
+2022-08-24 15:50:59,970 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:50:59,972 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:50:59,974 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 8
+2022-08-24 15:50:59,975 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:50:59,975 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 8
+2022-08-24 15:50:59,975 INFO    SenderThread:3866574 [file_pusher.py:finish():171] shutting down file pusher
+2022-08-24 15:51:00,075 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,075 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,178 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,180 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,281 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,281 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,382 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,383 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,484 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,484 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,510 INFO    Thread-21 :3866574 [upload_job.py:push():138] Uploaded file /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/output.log
+2022-08-24 15:51:00,527 INFO    Thread-20 :3866574 [upload_job.py:push():138] Uploaded file /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/conda-environment.yaml
+2022-08-24 15:51:00,562 INFO    Thread-19 :3866574 [upload_job.py:push():138] Uploaded file /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/requirements.txt
+2022-08-24 15:51:00,585 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,585 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,596 INFO    Thread-18 :3866574 [upload_job.py:push():138] Uploaded file /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/wandb-summary.json
+2022-08-24 15:51:00,686 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,687 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,721 INFO    Thread-17 :3866574 [upload_job.py:push():138] Uploaded file /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/files/config.yaml
+2022-08-24 15:51:00,787 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,788 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,889 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:00,889 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:00,921 INFO    Thread-11 :3866574 [sender.py:transition_state():459] send defer: 9
+2022-08-24 15:51:00,921 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:51:00,922 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 9
+2022-08-24 15:51:00,922 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:51:00,922 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 9
+2022-08-24 15:51:00,990 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:01,112 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 10
+2022-08-24 15:51:01,112 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:01,112 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:51:01,113 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 10
+2022-08-24 15:51:01,113 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:51:01,113 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 10
+2022-08-24 15:51:01,113 INFO    SenderThread:3866574 [sender.py:transition_state():459] send defer: 11
+2022-08-24 15:51:01,113 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: defer
+2022-08-24 15:51:01,113 DEBUG   SenderThread:3866574 [sender.py:send():302] send: final
+2022-08-24 15:51:01,113 INFO    HandlerThread:3866574 [handler.py:handle_request_defer():164] handle defer: 11
+2022-08-24 15:51:01,113 DEBUG   SenderThread:3866574 [sender.py:send():302] send: footer
+2022-08-24 15:51:01,114 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: defer
+2022-08-24 15:51:01,114 INFO    SenderThread:3866574 [sender.py:send_request_defer():455] handle sender defer: 11
+2022-08-24 15:51:01,213 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: poll_exit
+2022-08-24 15:51:01,213 DEBUG   SenderThread:3866574 [sender.py:send_request():316] send_request: poll_exit
+2022-08-24 15:51:01,214 INFO    SenderThread:3866574 [file_pusher.py:join():176] waiting for file pusher
+2022-08-24 15:51:01,676 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: sampled_history
+2022-08-24 15:51:01,677 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: get_summary
+2022-08-24 15:51:01,677 INFO    MainThread:3866574 [wandb_run.py:_footer_history_summary_info():3305] rendering history
+2022-08-24 15:51:01,677 INFO    MainThread:3866574 [wandb_run.py:_footer_history_summary_info():3337] rendering summary
+2022-08-24 15:51:01,677 INFO    MainThread:3866574 [wandb_run.py:_footer_sync_info():3261] logging synced files
+2022-08-24 15:51:01,677 DEBUG   HandlerThread:3866574 [handler.py:handle_request():141] handle_request: shutdown
+2022-08-24 15:51:01,677 INFO    HandlerThread:3866574 [handler.py:finish():810] shutting down handler
+2022-08-24 15:51:02,113 INFO    WriterThread:3866574 [datastore.py:close():279] close: /home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/outputs/2022-08-24/15-50-46/wandb/run-20220824_155049-3g1371hi/run-3g1371hi.wandb
+2022-08-24 15:51:02,575 INFO    SenderThread:3866574 [sender.py:finish():1312] shutting down sender
+2022-08-24 15:51:02,576 INFO    SenderThread:3866574 [file_pusher.py:finish():171] shutting down file pusher
+2022-08-24 15:51:02,576 INFO    SenderThread:3866574 [file_pusher.py:join():176] waiting for file pusher
+2022-08-24 15:51:02,679 INFO    MainThread:3866574 [internal.py:handle_exit():80] Internal process exited

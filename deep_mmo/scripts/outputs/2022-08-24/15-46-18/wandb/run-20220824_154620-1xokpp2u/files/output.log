@@ -1,0 +1,34 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Initialised experiment save dir /scratch/datasets/nmmo/sims//neurips2022nmmo/neurips2022nmmo_0/
+Config:
+experiment:
+  name: neurips2022nmmo
+  seed: 0
+  path_to_save: /scratch/datasets/nmmo/sims/
+  save_dir: /scratch/datasets/nmmo/sims//neurips2022nmmo/neurips2022nmmo_0/
+wandb:
+  init:
+    project: nmmo
+    entity: ong
+env_loop:
+  path_to_env_cls: neurips2022nmmo.TeamBasedEnv
+  path_to_env_config_cls: neurips2022nmmo.CompetitionConfig
+  teams_config:
+    neurips2022nmmo.scripted.CombatTeam:
+      team_id: Combat
+    neurips2022nmmo.scripted.Mixture:
+      team_id: Mixture
+  team_copies:
+  - 5
+  - 11
+  env_config_kwargs: null
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Initialised {'path_to_env_cls': 'neurips2022nmmo.TeamBasedEnv', 'path_to_env_config_cls': 'neurips2022nmmo.CompetitionConfig', 'teams_config': {'neurips2022nmmo.scripted.CombatTeam': {'team_id': 'Combat'}, 'neurips2022nmmo.scripted.Mixture': {'team_id': 'Mixture'}}, 'team_copies': [5, 11], 'env_config_kwargs': None, 'wandb': <module 'wandb' from '/scratch/zciccwf/py36/envs/neurips2022-nmmo/lib/python3.9/site-packages/wandb/__init__.py'>}.
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/home/zciccwf/personal/projects/neurips2022-nmmo-starter-kit/deep_mmo/scripts/test_heuristic_from_config.py", line 57, in run
+    results = env_loop.run(verbose=True)
+omegaconf.errors.ConfigAttributeError: Missing key run
+    full_key: env_loop.run
+    object_type=dict
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
