@@ -2,23 +2,25 @@ from deep_nmmo.utils import get_class_from_path
 
 from neurips2022nmmo import Team
 
+import nmmo
+
 from typing import Any, Dict, Type, List
 import numpy as np
 
 
-class CustomBaselineTeam(Team):
+class CustomTeam(Team):
     def __init__(self, 
                  team_id: str,
                  paths_to_agents_cls: list,
-                 conf=None, 
+                 env_config=None, 
                  **kwargs):
         '''
         Args:
             paths_to_agents_cls (list): List of paths to agent classes.
         '''
-        super().__init__(team_id, conf)
+        super().__init__(team_id, env_config)
         self.id = team_id
-        self.agents = [get_class_from_path(path_to_agent_cls)(config=conf, idx=idx) for idx, path_to_agent_cls in enumerate(paths_to_agents_cls)]
+        self.agents = [get_class_from_path(path_to_agent_cls)(config=env_config, idx=idx) for idx, path_to_agent_cls in enumerate(paths_to_agents_cls)]
             
     def reset(self):
         pass
@@ -62,4 +64,3 @@ class CustomBaselineTeam(Team):
             ] if x
         ]
         return targets.index(target)
-

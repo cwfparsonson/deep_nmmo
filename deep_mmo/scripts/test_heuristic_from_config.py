@@ -24,10 +24,12 @@ def run(cfg: DictConfig):
     # seeding
     if 'seed' in cfg.experiment:
         seed_stochastic_modules_globally(cfg.experiment.seed)
+        print(f'Seeded with seed={cfg.experiment.seed}')
 
     # create dir for saving data
     save_dir = gen_unique_experiment_folder(path_to_save=cfg.experiment.path_to_save, experiment_name=cfg.experiment.name)
     cfg['experiment']['save_dir'] = save_dir
+    print(f'Created save directory {save_dir}')
 
     # init weights and biases
     if 'wandb' in cfg:
@@ -54,9 +56,15 @@ def run(cfg: DictConfig):
     print(f'Initialised {env_loop}.')
 
     start_time = time.time()
-    results = env_loop.run(verbose=True)
-    print(f'Finished validation in {time.time() - start_time:.3f} s.')
-    print(f'Validation results:\n{results}')
+    for _ in range(cfg.experiment.num_epochs):
+        env_loop.run(verbose=True)
+        if env_loop.wandb is not None:
+            # log env loop episode results
+            update_log_start_time = time.time()
+            env_loop.update_log(external_log=None)
+            update_log_time = time.time() - update_log_start_time
+            print(f'Updated log in {update_log_time:.3f} s')
+    print(f'Finished run in {time.time() - start_time:.3f} s')
 
 if __name__ == '__main__':
     run()
