@@ -1,0 +1,71 @@
+experiment:
+    name: 'neurips2022nmmo'
+    seed: 0 # global module seeding (e.g. numpy, random, torch, etc.)
+    env_seed: null # determinstic environment seeding for test-time determinism
+    path_to_save: '/scratch/datasets/nmmo/sims/'
+    save_dir: null # placeholder, will be updated
+    num_epochs: 1
+    #num_epochs: 3
+
+wandb:
+    init:
+        project: nmmo
+        entity: ong 
+        dir: null # gets overwritten in script with above path_to_save
+
+env_loop:
+    _target_: deep_nmmo.envs.team_based_env.loops.env_loop.EnvLoop
+
+    path_to_env_cls: 'neurips2022nmmo.TeamBasedEnv'
+
+    path_to_env_config_cls: 'neurips2022nmmo.CompetitionConfig'
+    #path_to_env_config_cls: 'deep_nmmo.envs.team_based_env.env_configs.custom_competition_config.CustomCompetitionConfig'
+
+    teams_config:
+
+        Custom:
+            path_to_team_cls: 'deep_nmmo.envs.team_based_env.teams.custom_team.CustomTeam'
+            paths_to_agents_cls:
+                '0': 'neurips2022nmmo.scripted.baselines.Fisher'
+                '1': 'neurips2022nmmo.scripted.baselines.Herbalist'
+                '2': 'neurips2022nmmo.scripted.baselines.Prospector'
+                '3': 'neurips2022nmmo.scripted.baselines.Carver'
+                '4': 'neurips2022nmmo.scripted.baselines.Alchemist'
+                '5': 'neurips2022nmmo.scripted.baselines.Melee'
+                '6': 'neurips2022nmmo.scripted.baselines.Range'
+                '7': 'neurips2022nmmo.scripted.baselines.Mage'
+
+        Combat:
+            path_to_team_cls: 'neurips2022nmmo.scripted.CombatTeam'
+
+        Mixture:
+            path_to_team_cls: 'neurips2022nmmo.scripted.MixtureTeam'
+
+
+    teams_copies:
+        ## CompetitionConfig
+        #- 5
+        #- 11
+        
+        # CompetitionConfig
+        - 1
+        - 5
+        - 10
+        
+        ## CustomCompetitionConfig
+        #- 1
+        #- 1
+
+    env_config_kwargs: null
+    parallel: true
+
+# DISABLE HYDRA LOGGING TO SAVE MEMORY
+defaults:  
+  - _self_  
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled  
+  
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .

@@ -1,0 +1,112 @@
+program: test_heuristic_from_config.py
+#method: grid
+method: bayes
+#method: random
+metric:
+  goal: maximize
+  name: analyzer/result_by_team_0/.total_score
+parameters:
+
+    #env_loop.teams_config.Custom.paths_to_agents_cls:
+        #values:
+            #- ['neurips2022nmmo.scripted.baselines.Fisher',
+               #'neurips2022nmmo.scripted.baselines.Herbalist',
+               #'neurips2022nmmo.scripted.baselines.Prospector',
+               #'neurips2022nmmo.scripted.baselines.Carver',
+               #'neurips2022nmmo.scripted.baselines.Alchemist',
+               #'neurips2022nmmo.scripted.baselines.Melee',
+               #'neurips2022nmmo.scripted.baselines.Range',
+               #'neurips2022nmmo.scripted.baselines.Mage']
+
+            #- ['neurips2022nmmo.scripted.baselines.Fisher',
+               #'neurips2022nmmo.scripted.baselines.Herbalist',
+               #'neurips2022nmmo.scripted.baselines.Melee',
+               #'neurips2022nmmo.scripted.baselines.Range',
+               #'neurips2022nmmo.scripted.baselines.Alchemist',
+               #'neurips2022nmmo.scripted.baselines.Melee',
+               #'neurips2022nmmo.scripted.baselines.Range',
+               #'neurips2022nmmo.scripted.baselines.Mage']
+
+    env_loop.teams_config.Custom.paths_to_agents_cls.0:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+    env_loop.teams_config.Custom.paths_to_agents_cls.1:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+    env_loop.teams_config.Custom.paths_to_agents_cls.2:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+    env_loop.teams_config.Custom.paths_to_agents_cls.3:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+    env_loop.teams_config.Custom.paths_to_agents_cls.4:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+    env_loop.teams_config.Custom.paths_to_agents_cls.5:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+    env_loop.teams_config.Custom.paths_to_agents_cls.6:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+    env_loop.teams_config.Custom.paths_to_agents_cls.7:
+        values: ['neurips2022nmmo.scripted.baselines.Fisher',
+                'neurips2022nmmo.scripted.baselines.Herbalist',
+                'neurips2022nmmo.scripted.baselines.Prospector',
+                'neurips2022nmmo.scripted.baselines.Carver',
+                'neurips2022nmmo.scripted.baselines.Alchemist',
+                'neurips2022nmmo.scripted.baselines.Melee',
+                'neurips2022nmmo.scripted.baselines.Range',
+                'neurips2022nmmo.scripted.baselines.Mage']
+
+
+
+
+
+command:
+  - ${env}
+  - python
+  - ${program}
+  - --config-path=configs
+  - ${args_no_hyphens}
