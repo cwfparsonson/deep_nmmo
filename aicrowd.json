@@ -1,5 +1,7 @@
 {
-    "challenge_id" : "neurips-2022-the-neural-mmo-challenge",
-    "authors" : [],
-    "description" : "Brief description for your submission"
+    "challenge_id": "neurips-2022-the-neural-mmo-challenge",
+    "authors": [
+        "cwfparsonson"
+    ],
+    "description": "Brief description for your submission"
 }

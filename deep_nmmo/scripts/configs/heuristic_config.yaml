@@ -4,8 +4,8 @@ experiment:
     env_seed: null # determinstic environment seeding for test-time determinism
     path_to_save: '/scratch/datasets/nmmo/sims/'
     save_dir: null # placeholder, will be updated
-    num_epochs: 1
-    #num_epochs: 3
+    #num_runs: 1
+    num_runs: 10
 
 wandb:
     init:
@@ -55,9 +55,12 @@ env_loop:
         ## CustomCompetitionConfig
         #- 1
         #- 1
+        #- 1
 
     env_config_kwargs: null
-    parallel: true
+
+    team_action_parallel: true
+    run_parallel: true # whether or not to run epochs in parallel (if e.g. running 10 evaluations)
 
 # DISABLE HYDRA LOGGING TO SAVE MEMORY
 defaults:  

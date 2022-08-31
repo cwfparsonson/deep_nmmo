@@ -57,15 +57,15 @@ def run(cfg: DictConfig):
     print(f'Initialised {env_loop}.')
 
     start_time = time.time()
-    for _ in range(cfg.experiment.num_epochs):
-        env_loop.run(verbose=True, seed=cfg.experiment.env_seed)
-        if env_loop.wandb is not None:
-            # log env loop episode results
-            update_log_start_time = time.time()
-            env_loop.update_log(external_log=None)
-            update_log_time = time.time() - update_log_start_time
-            print(f'Updated log in {update_log_time:.3f} s')
-    print(f'Finished run in {time.time() - start_time:.3f} s')
+    print(f'Launching run of {cfg.experiment.num_runs} episode(s)...')
+    results = env_loop.run(verbose=False, seed=cfg.experiment.env_seed, num_episodes=cfg.experiment.num_runs)
+    print(f'Finished run of {cfg.experiment.num_runs} episode(s) in {time.time() - start_time:.3f} s')
+    update_log_start_time = time.time()
+    for result in results:
+        env_loop.update_log(**result)
+        time.sleep(0.25)
+    update_log_time = time.time() - update_log_start_time
+    print(f'Updated log in {update_log_time:.3f} s')
 
 if __name__ == '__main__':
     run()

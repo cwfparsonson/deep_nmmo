@@ -4,7 +4,8 @@ method: bayes
 #method: random
 metric:
   goal: maximize
-  name: analyzer/result_by_team_0/.total_score
+  #name: analyzer/result_by_team_0/.total_score
+  name: analyzer/mean_result_by_team_0/.total_score
 parameters:
 
     #env_loop.teams_config.Custom.paths_to_agents_cls:

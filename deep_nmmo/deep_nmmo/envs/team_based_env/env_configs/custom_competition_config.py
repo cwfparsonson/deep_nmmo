@@ -3,7 +3,7 @@ import nmmo
 import neurips2022nmmo
 
 class CustomCompetitionConfig(neurips2022nmmo.CompetitionConfig):
-    NUM_TEAMS = 2
+    NUM_TEAMS = 3
     PLAYER_TEAM_SIZE = 8 # number of players per team
 
     PLAYERS = [nmmo.Agent] * NUM_TEAMS # A.K.A. in TeamBasedEnv, PLAYERS == TEAMS, will overwrite with players with instantiated teams
