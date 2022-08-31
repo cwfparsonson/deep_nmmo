@@ -62,7 +62,7 @@ def run(cfg: DictConfig):
     print(f'Finished run of {cfg.experiment.num_runs} episode(s) in {time.time() - start_time:.3f} s')
     update_log_start_time = time.time()
     for result in results:
-        env_loop.update_log(**result)
+        env_loop.update_log(**result, **cfg.logger)
         time.sleep(0.25)
     update_log_time = time.time() - update_log_start_time
     print(f'Updated log in {update_log_time:.3f} s')

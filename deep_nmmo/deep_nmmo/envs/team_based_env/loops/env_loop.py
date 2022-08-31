@@ -337,6 +337,10 @@ class EnvLoop:
                    teams,
                    episode_log: dict,
                    external_log: dict = None,
+                   log_tracker: bool = True,
+                   log_timer: bool = True,
+                   log_env: bool = True,
+                   log_analyzer: bool = True,
                    **kwargs):
         '''Call this after each call to EnvLoop.run() to update the W&B log after each episode.
 
@@ -350,84 +354,73 @@ class EnvLoop:
             # update EnvLoop log with externally-provided additional log data
             self.log.update(external_log)
 
-        # update tracker stats
-        self.log['tracker/num_env_episodes'] += 1
-        self.log['tracker/num_env_steps'] += episode_log['env_step_counter']
+        if log_tracker:
+            # update tracker stats
+            self.log['tracker/num_env_episodes'] += 1
+            self.log['tracker/num_env_steps'] += episode_log['env_step_counter']
 
-        # update timer stats
-        for metric in ['timer/get_action_total_time', 'timer/step_env_total_time', 'timer/episode_total_run_time']:
-            self.log[metric] = episode_log[metric]
-        self.log['timer/get_action_mean_time'] = self.log['timer/get_action_total_time'] / episode_log['env_step_counter']
-        self.log['timer/step_env_mean_time'] = self.log['timer/step_env_total_time'] / episode_log['env_step_counter']
+        if log_timer:
+            # update timer stats
+            for metric in ['timer/get_action_total_time', 'timer/step_env_total_time', 'timer/episode_total_run_time']:
+                self.log[metric] = episode_log[metric]
+            self.log['timer/get_action_mean_time'] = self.log['timer/get_action_total_time'] / episode_log['env_step_counter']
+            self.log['timer/step_env_mean_time'] = self.log['timer/step_env_total_time'] / episode_log['env_step_counter']
 
-        # update env stats
-        # metrics_by_team = env.metrices_by_team()
-        # stats_by_team = env.stat_by_team() # maps team_id -> min/max/sum/avg player_metric 
-        for team_id in metrics_by_team.keys():
-            self.log[f'env/player_stats_by_team_{team_id}/'] = metrics_by_team[team_id]
-            self.log[f'env/team_stats_by_team_{team_id}/'] = stats_by_team[team_id]
+        if log_env:
+            # update env stats
+            for team_id in metrics_by_team.keys():
+                self.log[f'env/player_stats_by_team_{team_id}/'] = metrics_by_team[team_id]
+                self.log[f'env/team_stats_by_team_{team_id}/'] = stats_by_team[team_id]
 
-        # update analyzer per-team per-attr TeamResult
-        # policy_id_by_team = {
-            # i: teams[i].policy_id
-            # for i in metrics_by_team.keys()
-        # }
-        # n_timeout_by_team = {
-                # i: teams[i].n_timeout
-            # for i in metrics_by_team.keys()
-        # }
-        # result_by_team = analyzer.gen_result(
-                                                # policy_id_by_team, 
-                                                # metrics_by_team,
-                                                # n_timeout_by_team
-                                              # )
-        # record TeamResult object for this episode
-        self.team_results.append(result_by_team)
-        # process TeamResult objects into JSON-serialisable format for wandb
-        for team_id, team_result in result_by_team.items():
-            self.log[f'analyzer/result_by_team_{team_id}/'] = {attr: getattr(team_result, attr) for attr in analyzer.TeamResult.names()}
+        if log_analyzer:
+            # record TeamResult object for this episode
+            self.team_results.append(result_by_team)
 
-        # update analyzer TeamResult stats table
-        teams_rows = []
-        for team_id, team_result in result_by_team.items():
-            team_row = [team_id, self.log['tracker/num_env_episodes']]
             # process TeamResult objects into JSON-serialisable format for wandb
-            for attr in analyzer.TeamResult.names():
-                team_row.append(getattr(team_result, attr))
-            self.log['analyzer/result_by_team_table'].add_data(*team_row)
+            for team_id, team_result in result_by_team.items():
+                self.log[f'analyzer/result_by_team_{team_id}/'] = {attr: getattr(team_result, attr) for attr in analyzer.TeamResult.names()}
 
-        # update aggregated teams per-attr analyzer plots with TeamResult
-        table_df = {}
-        for col in self.log['analyzer/result_by_team_table'].columns:
-            table_df[col] = self.log['analyzer/result_by_team_table'].get_column(col)
-        table_df = pd.DataFrame(table_df)
-        xs = list(table_df.groupby("team_id")['episode'].apply(list).to_dict().values())
-        for attr in analyzer.TeamResult.names():
-            team_id_to_attrs = table_df.groupby("team_id")[attr].apply(list).to_dict()
-            self.log[f'analyzer/result_by_attr_{attr}'] = self.wandb.plot.line_series(
-                                                                                xs=xs,
-                                                                                ys=list(team_id_to_attrs.values()),
-                                                                                keys=list(team_id_to_attrs.keys()),
-                                                                                title=attr,
-                                                                                xname='Episode',
-                                                                            )
+            # update analyzer TeamResult stats table
+            teams_rows = []
+            for team_id, team_result in result_by_team.items():
+                team_row = [team_id, self.log['tracker/num_env_episodes']]
+                # process TeamResult objects into JSON-serialisable format for wandb
+                for attr in analyzer.TeamResult.names():
+                    team_row.append(getattr(team_result, attr))
+                self.log['analyzer/result_by_team_table'].add_data(*team_row)
 
-        # update mean team result summary table
-        mean_result_by_team = analyzer.avg_results(self.team_results)
-        # for n in range(1, self.env_config.NUM_TEAMS):
-            # self.log[f'analyzer/top_{n}_ratio_by_team'] = analyzer.topn_probs([result_by_team], n=n)
-        topn_probs = analyzer.topn_probs(self.team_results, n=1)
-        team_summary_columns = ['team_id', 'top_1_ratio']
-        team_summary_columns.extend([f'mean_{attr}' for attr in analyzer.TeamResult.names()])
-        self.log['analyzer/mean_result_by_team_table/'] = self.wandb.Table(columns=team_summary_columns)
-        for team_id, topn_prob in topn_probs.items():
-            row, attr_to_val = [team_id, topn_prob], {}
-            team_result = mean_result_by_team[team_id]
+            # update aggregated teams per-attr analyzer plots with TeamResult
+            table_df = {}
+            for col in self.log['analyzer/result_by_team_table'].columns:
+                table_df[col] = self.log['analyzer/result_by_team_table'].get_column(col)
+            table_df = pd.DataFrame(table_df)
+            xs = list(table_df.groupby("team_id")['episode'].apply(list).to_dict().values())
             for attr in analyzer.TeamResult.names():
-                row.append(getattr(team_result, attr))
-                attr_to_val[attr] = getattr(team_result, attr)
-            self.log[f'analyzer/mean_result_by_team_table/'].add_data(*row)
-            self.log[f'analyzer/mean_result_by_team_{team_id}/'] = attr_to_val
+                team_id_to_attrs = table_df.groupby("team_id")[attr].apply(list).to_dict()
+                self.log[f'analyzer/result_by_attr_{attr}'] = self.wandb.plot.line_series(
+                                                                                    xs=xs,
+                                                                                    ys=list(team_id_to_attrs.values()),
+                                                                                    keys=list(team_id_to_attrs.keys()),
+                                                                                    title=attr,
+                                                                                    xname='Episode',
+                                                                                )
+
+            # update mean team result summary table
+            mean_result_by_team = analyzer.avg_results(self.team_results)
+            # for n in range(1, self.env_config.NUM_TEAMS):
+                # self.log[f'analyzer/top_{n}_ratio_by_team'] = analyzer.topn_probs([result_by_team], n=n)
+            topn_probs = analyzer.topn_probs(self.team_results, n=1)
+            team_summary_columns = ['team_id', 'top_1_ratio']
+            team_summary_columns.extend([f'mean_{attr}' for attr in analyzer.TeamResult.names()])
+            self.log['analyzer/mean_result_by_team_table/'] = self.wandb.Table(columns=team_summary_columns)
+            for team_id, topn_prob in topn_probs.items():
+                row, attr_to_val = [team_id, topn_prob], {}
+                team_result = mean_result_by_team[team_id]
+                for attr in analyzer.TeamResult.names():
+                    row.append(getattr(team_result, attr))
+                    attr_to_val[attr] = getattr(team_result, attr)
+                self.log[f'analyzer/mean_result_by_team_table/'].add_data(*row)
+                self.log[f'analyzer/mean_result_by_team_{team_id}/'] = attr_to_val
 
         # update wandb log
         self.wandb.log(self.log)

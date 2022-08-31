@@ -62,6 +62,12 @@ env_loop:
     team_action_parallel: true
     run_parallel: true # whether or not to run epochs in parallel (if e.g. running 10 evaluations)
 
+logger:
+    log_tracker: true
+    log_timer: true
+    log_env: true
+    log_analyzer: true
+
 # DISABLE HYDRA LOGGING TO SAVE MEMORY
 defaults:  
   - _self_  
