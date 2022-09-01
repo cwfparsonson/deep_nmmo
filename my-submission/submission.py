@@ -34,8 +34,8 @@ def get_class_from_path(path):
 class CustomTeam(Team):
     def __init__(self, 
                  team_id: str,
+                 env_config, 
                  paths_to_agents_cls: list,
-                 env_config=None, 
                  **kwargs):
         '''
         Args:
