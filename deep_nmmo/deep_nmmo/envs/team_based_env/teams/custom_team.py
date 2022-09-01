@@ -11,8 +11,8 @@ import numpy as np
 class CustomTeam(Team):
     def __init__(self, 
                  team_id: str,
+                 env_config, 
                  paths_to_agents_cls: dict,
-                 env_config=None, 
                  **kwargs):
         '''
         Args:
