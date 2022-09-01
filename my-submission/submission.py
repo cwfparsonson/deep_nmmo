@@ -13,8 +13,6 @@ python tool.py submit <unique-submission-name> --startby=docker
 # from deep_nmmo.utils import get_class_from_path
 
 from neurips2022nmmo import Team
-from neurips2022nmmo.scripted.scripted_team import setup
-setup()
 
 import nmmo
 
@@ -26,6 +24,35 @@ def get_class_from_path(path):
     path_to_class = '.'.join(path.split('.')[:-1])
     module = __import__(path_to_class, fromlist=[ClassName])
     return getattr(module, ClassName)
+
+def setup():
+    from nmmo.systems import item
+    from nmmo.io.action import Price
+    for itm in [
+            item.Gold,
+            item.Hat,
+            item.Top,
+            item.Bottom,
+            item.Sword,
+            item.Bow,
+            item.Wand,
+            item.Rod,
+            item.Gloves,
+            item.Pickaxe,
+            item.Chisel,
+            item.Arcane,
+            item.Scrap,
+            item.Shard,
+            item.Shaving,
+            item.Ration,
+            item.Poultice,
+    ]:
+
+        item.ItemID.register(itm, itm.ITEM_ID)
+    Price.init(None)
+
+
+setup()
 
 
 class CustomTeam(Team):
