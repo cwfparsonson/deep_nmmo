@@ -7,11 +7,6 @@ Instructions on how to submit: https://gitlab.aicrowd.com/neural-mmo/neurips2022
 python tool.py test --startby=docker
 python tool.py submit <unique-submission-name> --startby=docker
 '''
-
-# from deep_nmmo.envs.team_based_env.teams.custom_team import CustomTeam
-
-# from deep_nmmo.utils import get_class_from_path
-
 from neurips2022nmmo import Team
 
 import nmmo
@@ -66,10 +61,6 @@ class CustomTeam(Team):
         super().__init__(team_id, env_config, **kwargs)
         self.agent_klass = [get_class_from_path(path_to_agent_cls) for path_to_agent_cls in paths_to_agents_cls.values()]
         self.reset()
-        # self.agents = [get_class_from_path(path_to_agent_cls)(config=env_config, idx=int(idx)) for idx, path_to_agent_cls in paths_to_agents_cls.items()]
-            
-    # def reset(self):
-        # pass
 
     def reset(self):
         assert self.agent_klass
@@ -82,19 +73,10 @@ class CustomTeam(Team):
     def act(self, observations: Dict[Any, dict]) -> Dict[int, dict]:
         if "stat" in observations:
             stat = observations.pop("stat")
-        print(f'obs keys: {observations.keys()}')
-        print(f'agent_klass: {self.agent_klass}')
-        print(f'agents: {self.agents}')
         actions = {i: self.agents[i](obs) for i, obs in observations.items()}
         for i in actions:
-            print(f'\ni: {i}')
-            print(f'actions[i]: {actions[i]}')
             for atn, args in actions[i].items():
-                print(f'atn: {atn}')
-                print(f'args: {args}')
                 for arg, val in args.items():
-                    print(f'arg: {arg}')
-                    print(f'val: {val}')
                     if arg.argType == nmmo.action.Fixed:
                         actions[i][atn][arg] = arg.edges.index(val)
                     elif arg == nmmo.action.Target:
@@ -140,18 +122,5 @@ class Submission:
                         '5': 'neurips2022nmmo.scripted.baselines.Mage',
                         '6': 'neurips2022nmmo.scripted.baselines.Mage',
                         '7': 'neurips2022nmmo.scripted.baselines.Mage',
-                    }
-                  }
-
-    init_params = {'paths_to_agents_cls': 
-                    {
-                        '0': 'neurips2022nmmo.scripted.baselines.Herbalist',
-                        '1': 'neurips2022nmmo.scripted.baselines.Melee',
-                        '2': 'neurips2022nmmo.scripted.baselines.Range',
-                        '3': 'neurips2022nmmo.scripted.baselines.Fisher',
-                        '4': 'neurips2022nmmo.scripted.baselines.Carver',
-                        '5': 'neurips2022nmmo.scripted.baselines.Range',
-                        '6': 'neurips2022nmmo.scripted.baselines.Alchemist',
-                        '7': 'neurips2022nmmo.scripted.baselines.Fisher',
                     }
                   }
