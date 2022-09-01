@@ -82,10 +82,19 @@ class CustomTeam(Team):
     def act(self, observations: Dict[Any, dict]) -> Dict[int, dict]:
         if "stat" in observations:
             stat = observations.pop("stat")
+        print(f'obs keys: {observations.keys()}')
+        print(f'agent_klass: {self.agent_klass}')
+        print(f'agents: {self.agents}')
         actions = {i: self.agents[i](obs) for i, obs in observations.items()}
         for i in actions:
+            print(f'\ni: {i}')
+            print(f'actions[i]: {actions[i]}')
             for atn, args in actions[i].items():
+                print(f'atn: {atn}')
+                print(f'args: {args}')
                 for arg, val in args.items():
+                    print(f'arg: {arg}')
+                    print(f'val: {val}')
                     if arg.argType == nmmo.action.Fixed:
                         actions[i][atn][arg] = arg.edges.index(val)
                     elif arg == nmmo.action.Target:
