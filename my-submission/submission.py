@@ -20,11 +20,6 @@ from typing import Any, Dict, Type, List
 import numpy as np
 
 def get_class_from_path(path):
-    '''
-    Path must be the path to the class **without** the .py extension.
-
-    E.g. deep_nmmo.module_name.ModuleClass
-    '''
     ClassName = path.split('.')[-1]
     path_to_class = '.'.join(path.split('.')[:-1])
     module = __import__(path_to_class, fromlist=[ClassName])
@@ -35,17 +30,10 @@ class CustomTeam(Team):
     def __init__(self, 
                  team_id: str,
                  env_config, 
-                 paths_to_agents_cls: list,
+                 paths_to_agents_cls: dict,
                  **kwargs):
-        '''
-        Args:
-            paths_to_agents_cls (dict): Dict mapping agents indices to paths to agent classes.
-                N.B. Indices must be able to be converted into ints e.g. can be '10' or 10 but 
-                not 'agent'.
-        '''
         super().__init__(team_id, env_config)
         self.id = team_id
-        # self.agents = [get_class_from_path(path_to_agent_cls)(config=env_config, idx=idx) for idx, path_to_agent_cls in enumerate(paths_to_agents_cls)]
         self.agents = [get_class_from_path(path_to_agent_cls)(config=env_config, idx=int(idx)) for idx, path_to_agent_cls in paths_to_agents_cls.items()]
             
     def reset(self):
@@ -93,6 +81,19 @@ class CustomTeam(Team):
 
 class Submission:
     team_klass = CustomTeam
+    init_params = {'paths_to_agents_cls': 
+                    {
+                        '0': 'neurips2022nmmo.scripted.baselines.Mage',
+                        '1': 'neurips2022nmmo.scripted.baselines.Mage',
+                        '2': 'neurips2022nmmo.scripted.baselines.Mage',
+                        '3': 'neurips2022nmmo.scripted.baselines.Mage',
+                        '4': 'neurips2022nmmo.scripted.baselines.Mage',
+                        '5': 'neurips2022nmmo.scripted.baselines.Mage',
+                        '6': 'neurips2022nmmo.scripted.baselines.Mage',
+                        '7': 'neurips2022nmmo.scripted.baselines.Mage',
+                    }
+                  }
+
     init_params = {'paths_to_agents_cls': 
                     {
                         '0': 'neurips2022nmmo.scripted.baselines.Herbalist',
