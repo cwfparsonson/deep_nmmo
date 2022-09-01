@@ -13,6 +13,8 @@ python tool.py submit <unique-submission-name> --startby=docker
 # from deep_nmmo.utils import get_class_from_path
 
 from neurips2022nmmo import Team
+from neurips2022nmmo.scripted.scripted_team import setup
+setup()
 
 import nmmo
 
