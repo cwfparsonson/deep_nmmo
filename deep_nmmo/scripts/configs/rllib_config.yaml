@@ -1,14 +1,18 @@
 experiment:
     name: 'neurips2022nmmo'
     seed: 0 # global module seeding (e.g. numpy, random, torch, etc.)
+    env_seed: null # determinstic environment seeding for test-time determinism
     path_to_save: '/scratch/datasets/nmmo/sims/'
     save_dir: null # placeholder, will be updated
+    #num_runs: 1
+    num_runs: 10
 
 wandb:
     init:
         project: nmmo
         entity: ong 
         dir: null # gets overwritten in script with above path_to_save
+
 
 env:
     path_to_env_cls: 'neurips2022nmmo.TeamBasedEnv'
@@ -54,17 +58,52 @@ env:
 
     env_config_kwargs: null
 
+
 loop:
     _target_: deep_nmmo.envs.team_based_env.loops.env_loop.EnvLoop
 
     team_action_parallel: true
     run_parallel: true # whether or not to run epochs in parallel (if e.g. running 10 evaluations)
 
+
 loop_run:
     verbose: false
     seed: null # determinstic environment seeding for test-time determinism
     num_episodes: 1
     #num_episodes: 10
+
+
+rllib_config:
+    seed: null # will automatically be overwritten with experiment.train_seed
+
+    disable_env_checking: true
+
+    lr: 0.0001
+    gamma: 0.9
+
+    batch_mode: complete_episodes
+
+    # need sgd_minibatch_size <= train_batch_size
+    #train_batch_size: 64
+    #sgd_minibatch_size: 32
+    #train_batch_size: 4
+    #sgd_minibatch_size: 4
+    train_batch_size: 1
+    sgd_minibatch_size: 1
+
+    callbacks: deep_nmmo.team_based_env.loops.callbacks.RLlibEnvLoopCallback
+
+    #num_workers: 4 # num parallel cpu workers
+    #num_workers: 2 # num parallel cpu workers
+    num_workers: 1
+    num_gpus: 1 # num gpus available for RLlib
+
+    framework: torch
+
+
+
+
+
 
 logger:
     log_tracker: true

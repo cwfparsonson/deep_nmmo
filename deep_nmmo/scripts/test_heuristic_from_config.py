@@ -53,16 +53,21 @@ def run(cfg: DictConfig):
     print(f'Config:\n{OmegaConf.to_yaml(cfg)}')
     print(f'~'*100)
 
-    env_loop = hydra.utils.instantiate(cfg.env_loop, wandb=wandb)
-    print(f'Initialised {env_loop}.')
+    loop = hydra.utils.instantiate(config={**cfg.env, **cfg.loop})
+    print(f'Initialised {loop}.')
 
     start_time = time.time()
-    print(f'Launching run of {cfg.experiment.num_runs} episode(s)...')
-    results = env_loop.run(verbose=False, seed=cfg.experiment.env_seed, num_episodes=cfg.experiment.num_runs)
-    print(f'Finished run of {cfg.experiment.num_runs} episode(s) in {time.time() - start_time:.3f} s')
+    print(f'Launching loop run with config={cfg.loop_run}')
+    loop_log, team_results = loop.reset()
+    results = loop.run(**cfg.loop_run)
+    print(f'Finished loop run in {time.time() - start_time:.3f} s')
     update_log_start_time = time.time()
     for result in results:
-        env_loop.update_log(**result, **cfg.logger)
+        loop_log, team_results = loop.update_log(loop_log=loop_log,
+                                                 team_results=team_results,
+                                                 **result, 
+                                                 **cfg.logger)
+        wandb.log(loop_log)
         time.sleep(0.25)
     update_log_time = time.time() - update_log_start_time
     print(f'Updated log in {update_log_time:.3f} s')
