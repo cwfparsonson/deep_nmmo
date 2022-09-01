@@ -61,12 +61,23 @@ class CustomTeam(Team):
                  env_config, 
                  paths_to_agents_cls: dict,
                  **kwargs):
-        super().__init__(team_id, env_config)
-        self.id = team_id
-        self.agents = [get_class_from_path(path_to_agent_cls)(config=env_config, idx=int(idx)) for idx, path_to_agent_cls in paths_to_agents_cls.items()]
+        if "policy_id" not in kwargs:
+            kwargs["policy_id"] = self.__class__.__name__
+        super().__init__(team_id, env_config, **kwargs)
+        self.agent_klass = [get_class_from_path(path_to_agent_cls) for path_to_agent_cls in paths_to_agents_cls.values()]
+        self.reset()
+        # self.agents = [get_class_from_path(path_to_agent_cls)(config=env_config, idx=int(idx)) for idx, path_to_agent_cls in paths_to_agents_cls.items()]
             
+    # def reset(self):
+        # pass
+
     def reset(self):
-        pass
+        assert self.agent_klass
+        self.agents = []
+        for i in range(self.n_player):
+            idx = i % len(self.agent_klass)
+            agent = self.agent_klass[idx](self.env_config, i)
+            self.agents.append(agent)
     
     def act(self, observations: Dict[Any, dict]) -> Dict[int, dict]:
         if "stat" in observations:
