@@ -13,12 +13,13 @@ dependencies:
   - bottleneck=1.3.5=py39h7deecbd_0
   - brotlipy=0.7.0=py39hb9d737c_1004
   - bzip2=1.0.8=h7f98852_4
-  - ca-certificates=2022.07.19=h06a4308_0
-  - certifi=2022.6.15=py39h06a4308_0
+  - ca-certificates=2022.6.15=ha878542_0
+  - certifi=2022.6.15=pyhd8ed1ab_1
   - charset-normalizer=2.1.1=pyhd8ed1ab_0
   - cudatoolkit=11.6.0=hecad31d_10
   - debugpy=1.5.1=py39h295c915_0
   - decorator=5.1.1=pyhd3eb1b0_0
+  - dm-tree=0.1.7=py39h1832856_0
   - docker-pycreds=0.4.0=py_0
   - entrypoints=0.4=py39h06a4308_0
   - executing=0.8.3=pyhd3eb1b0_0
@@ -62,7 +63,7 @@ dependencies:
   - olefile=0.46=pyh9f0ad1d_1
   - openh264=2.1.1=h780b84a_0
   - openjpeg=2.4.0=hb52868f_1
-  - openssl=1.1.1q=h7f8727e_0
+  - openssl=1.1.1o=h166bdaf_0
   - packaging=21.3=pyhd3eb1b0_0
   - pandas=1.4.3=py39h6a678d5_0
   - parso=0.8.3=pyhd3eb1b0_0
@@ -99,6 +100,7 @@ dependencies:
   - torchvision=0.13.1=py39_cu116
   - tornado=6.1=py39h27cfd23_0
   - traitlets=5.1.1=pyhd3eb1b0_0
+  - tree=2.0.0=h7f98852_0
   - typing_extensions=4.3.0=pyha770c72_0
   - tzdata=2022a=hda174b7_0
   - urllib3=1.26.11=pyhd8ed1ab_0
@@ -131,10 +133,12 @@ dependencies:
     - commonmark==0.9.1
     - constantly==15.1.0
     - cryptography==37.0.4
+    - cycler==0.11.0
     - distlib==0.3.5
     - docopt==0.6.2
     - filelock==3.8.0
     - fire==0.4.0
+    - fonttools==4.37.1
     - frozenlist==1.3.1
     - gitpython==3.1.18
     - google-api-core==2.8.2
@@ -142,7 +146,7 @@ dependencies:
     - googleapis-common-protos==1.56.4
     - gpustat==1.0.0rc1
     - grpcio==1.43.0
-    - gym==0.25.2
+    - gym==0.23.1
     - gym-notices==0.0.8
     - hydra-core==1.2.0
     - hyperlink==21.0.0
@@ -151,10 +155,15 @@ dependencies:
     - incremental==21.3.0
     - iniconfig==1.1.1
     - jsonschema==4.14.0
+    - kiwisolver==1.4.4
     - loguru==0.6.0
     - lz4==4.0.0
+    - matplotlib==3.5.3
     - msgpack==1.0.4
     - multidict==6.0.2
+    - networkx==2.8.6
+    - neurips2022nmmo==0.2.8
+    - nmmo==1.6.0
     - numpy==1.23.2
     - nvidia-ml-py==11.495.46
     - omegaconf==2.2.3
@@ -181,19 +190,33 @@ dependencies:
     - pytest==7.1.2
     - pytest-benchmark==3.4.1
     - python-slugify==5.0.2
+    - pywavelets==1.3.0
     - pyzmq==22.1.0
     - ray==2.0.0
     - requests-toolbelt==0.9.1
     - rich==10.16.2
     - rsa==4.9
+    - scikit-image==0.19.3
     - scipy==1.9.0
     - semver==2.13.0
     - service-identity==21.1.0
+    - setproctitle==1.1.10
     - smart-open==6.1.0
     - smmap==5.0.0
+    - tabulate==0.8.10
+    - tensorboardx==2.5.1
     - termcolor==1.1.0
     - text-unidecode==1.3
+    - tifffile==2022.8.12
     - toml==0.10.2
     - tomli==2.0.1
     - tqdm==4.61.1
+    - twisted==19.2.0
+    - txaio==22.2.1
+    - vec-noise==1.1.4
+    - virtualenv==20.16.3
+    - yarg==0.1.9
+    - yarl==1.8.1
+    - zipp==3.8.1
+    - zope-interface==5.4.0
 prefix: /scratch/zciccwf/py36/envs/nmmo
