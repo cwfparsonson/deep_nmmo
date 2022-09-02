@@ -8,6 +8,7 @@ python tool.py test --startby=docker
 python tool.py submit <unique-submission-name> --startby=docker
 '''
 from neurips2022nmmo import Team
+from neurips2022nmmo.scripted import CombatTeam
 
 import nmmo
 
@@ -111,16 +112,18 @@ class CustomTeam(Team):
         return targets.index(target)
 
 class Submission:
-    team_klass = CustomTeam
-    init_params = {'paths_to_agents_cls': 
-                    {
-                        '0': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '1': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '2': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '3': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '4': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '5': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '6': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '7': 'neurips2022nmmo.scripted.baselines.Mage',
-                    }
-                  }
+    team_klass = CombatTeam
+    init_params = {}
+    # team_klass = CustomTeam
+    # init_params = {'paths_to_agents_cls': 
+                    # {
+                        # '0': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '1': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '2': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '3': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '4': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '5': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '6': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '7': 'neurips2022nmmo.scripted.baselines.Mage',
+                    # }
+                  # }
