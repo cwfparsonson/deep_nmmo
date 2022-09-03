@@ -10,6 +10,7 @@ python tool.py submit <unique-submission-name> --startby=docker
 from neurips2022nmmo import Team
 from neurips2022nmmo.scripted import CombatTeam 
 from neurips2022nmmo.scripted.scripted_team import ScriptedTeam
+from neurips2022nmmo.scripted.baseliens import Mage
 
 import nmmo
 
@@ -56,12 +57,14 @@ class CustomTeam(Team):
     def __init__(self, 
                  team_id: str,
                  env_config, 
-                 paths_to_agents_cls: dict,
+                 # paths_to_agents_cls: dict,
+                 agent_klass: list,
                  **kwargs):
         if "policy_id" not in kwargs:
             kwargs["policy_id"] = self.__class__.__name__
         super().__init__(team_id, env_config, **kwargs)
-        self.agent_klass = [get_class_from_path(path_to_agent_cls) for path_to_agent_cls in paths_to_agents_cls.values()]
+        # self.agent_klass = [get_class_from_path(path_to_agent_cls) for path_to_agent_cls in paths_to_agents_cls.values()]
+        self.agent_klass = [klass for klass in agent_klass]
         self.reset()
 
     def reset(self):
@@ -125,15 +128,28 @@ class Submission:
     # init_params = {}
 
     team_klass = CustomTeam
-    init_params = {'paths_to_agents_cls': 
-                    {
-                        '0': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '1': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '2': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '3': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '4': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '5': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '6': 'neurips2022nmmo.scripted.baselines.Mage',
-                        '7': 'neurips2022nmmo.scripted.baselines.Mage',
-                    }
+    init_params = {'agents_klass': 
+                        [Mage,
+                         Mage,
+                         Mage,
+                         Mage,
+                         Mage,
+                         Mage,
+                         Mage,
+                         Mage,
+                         ]
                   }
+
+    # team_klass = CustomTeam
+    # init_params = {'paths_to_agents_cls': 
+                    # {
+                        # '0': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '1': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '2': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '3': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '4': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '5': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '6': 'neurips2022nmmo.scripted.baselines.Mage',
+                        # '7': 'neurips2022nmmo.scripted.baselines.Mage',
+                    # }
+                  # }
