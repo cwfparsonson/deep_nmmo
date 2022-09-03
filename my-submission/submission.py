@@ -10,7 +10,7 @@ python tool.py submit <unique-submission-name> --startby=docker
 from neurips2022nmmo import Team
 from neurips2022nmmo.scripted import CombatTeam 
 from neurips2022nmmo.scripted.scripted_team import ScriptedTeam
-from neurips2022nmmo.scripted.baseliens import Mage
+from neurips2022nmmo.scripted.baselines import Mage
 
 import nmmo
 
@@ -128,7 +128,7 @@ class Submission:
     # init_params = {}
 
     team_klass = CustomTeam
-    init_params = {'agents_klass': 
+    init_params = {'agent_klass': 
                         [Mage,
                          Mage,
                          Mage,
