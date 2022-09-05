@@ -11,12 +11,20 @@ class CustomTeam(Team):
     def __init__(self, 
                  team_id: str,
                  env_config, 
-                 paths_to_agents_cls: dict,
+                 agents_cls: list, # either string path or raw cls
+                 agents_kwargs: list, # corresponding kwargs for agents when inititalising
                  **kwargs):
         if "policy_id" not in kwargs:
             kwargs["policy_id"] = self.__class__.__name__
         super().__init__(team_id, env_config, **kwargs)
-        self.agent_klass = [get_class_from_path(path_to_agent_cls) for path_to_agent_cls in paths_to_agents_cls.values()]
+        # self.agent_klass = [get_class_from_path(path_to_agent_cls) for path_to_agent_cls in paths_to_agents_cls if isinstance(path_to_agent_cls, str) else path_to_agent_cls]
+        self.agent_klass = []
+        for agent_cls in agents_cls:
+            if isinstance(agents_cls, str):
+                self.agent_klass.append(get_class_from_path(agent_cls))
+            else:
+                self.agent_klass.append(agent_cls)
+        self.agents_kwargs = agents_kwargs
         self.reset()
 
     def reset(self):
@@ -24,8 +32,14 @@ class CustomTeam(Team):
         self.agents = []
         for i in range(self.n_player):
             idx = i % len(self.agent_klass)
-            agent = self.agent_klass[idx](self.env_config, i)
+            # agent = self.agent_klass[idx](config=self.env_config, idx=i, **self.agents_kwargs[idx])
+            agent = self.agent_klass[idx](config={'env_config': self.env_config, 'idx': i}, **self.agents_kwargs[idx])
             self.agents.append(agent)
+            # # TODO TEMP HACK: NMMO requires various calls such as self.ob etc which only exist inside nmmo_agent, so storing that here. This may lead to problems when batching, since self.obs set on each call but not saved across batches?
+            # if hasattr(agent, 'nmmo_agent'):
+                # self.agents.append(agent.nmmo_agent)
+            # else:
+                # self.agents.append(agent)
     
     def act(self, observations: Dict[Any, dict]) -> Dict[int, dict]:
         if "stat" in observations:
