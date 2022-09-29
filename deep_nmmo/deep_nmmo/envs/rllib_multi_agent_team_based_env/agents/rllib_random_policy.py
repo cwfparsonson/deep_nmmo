@@ -73,8 +73,8 @@ class RLlibRandomPolicy(RLlibNMMOPolicy):
             # rllib expects a tensor or numpy array
             rllib_actions = np.array([rllib_actions])
 
-        print(f'rllib_actions obs of agent: {obs.shape} {obs}') # DEBUG
-        print(f'rllib_actions returned by agent: {rllib_actions}') # DEBUG
-        print(f'ob of agent: {self.ob}')
+        # print(f'rllib_actions obs of agent: {obs.shape} {obs}') # DEBUG
+        # print(f'rllib_actions returned by agent: {rllib_actions}') # DEBUG
+        # print(f'ob of agent: {self.ob}')
 
         return rllib_actions, [], {}
