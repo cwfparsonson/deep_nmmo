@@ -58,14 +58,14 @@ class RLlibRandomPolicy(RLlibNMMOPolicy):
                         rllib_actions[action_type][action_dim] = None
                         # rllib_actions[action_type][action_dim] = np.zeros(self.action_space_struct[action_type][action_dim].shape)
 
-            # TODO TEMP DEBUG: Overwrite None action filler with sample action
-            sample_action = self.action_space.sample()
-            for action_type, _dict in self.actions.items():
-                for action_dim in _dict.keys():
-                    sample_action[action_type][action_dim] = self.actions[action_type][action_dim]
-            # print(f'rllib_actions: {rllib_actions}')
-            # print(f'action_space.sample(): {self.action_space.sample()}')
-            rllib_actions = sample_action
+            # # TODO TEMP DEBUG: Overwrite None action filler with sample action
+            # sample_action = self.action_space.sample()
+            # for action_type, _dict in self.actions.items():
+                # for action_dim in _dict.keys():
+                    # sample_action[action_type][action_dim] = self.actions[action_type][action_dim]
+            # # print(f'rllib_actions: {rllib_actions}')
+            # # print(f'action_space.sample(): {self.action_space.sample()}')
+            # rllib_actions = sample_action
 
             # rllib expects actions to be returned as a batch of actions
             batched_rllib_actions = [rllib_actions]
