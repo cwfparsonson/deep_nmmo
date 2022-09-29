@@ -42,8 +42,9 @@ class CustomTeam(Team):
                 # self.agents.append(agent)
     
     def act(self, observations: Dict[Any, dict]) -> Dict[int, dict]:
+        # filter obs as desired
         if "stat" in observations:
-            stat = observations.pop("stat")
+            _ = observations.pop("stat")
         actions = {i: self.agents[i](obs) for i, obs in observations.items()}
         for i in actions:
             for atn, args in actions[i].items():
