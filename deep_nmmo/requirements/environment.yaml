@@ -126,7 +126,7 @@ dependencies:
     - blessed==1.19.1
     - cachetools==5.2.0
     - cffi==1.15.1
-    - click==7.1.2
+    - click==8.0.4
     - cloudpickle==2.1.0
     - colorama==0.4.5
     - colorful==0.5.4
